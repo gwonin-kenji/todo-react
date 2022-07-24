@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  const [todoText, setTodoText] = useState("");
+
   const [incompleteTodoItems, setIncompleteTodoItems] = useState([
     "お皿洗い",
     "トイレ掃除"
@@ -9,10 +11,16 @@ export const App = () => {
 
   const [completeTodoItems, setCompleteTodoItems] = useState(["洗濯"]);
 
+  const onChangeTodoText = (event) => setTodoText(event.target.value);
+
   return (
     <>
       <div className="input-area">
-        <input placeholder="TODOを入力"></input>
+        <input
+          placeholder="TODOを入力"
+          value={todoText}
+          onChange={onChangeTodoText}
+        ></input>
         <button>追加</button>
       </div>
       <div className="incomplete-area">
