@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
+import { IncompleteTodos } from "./components/IncompleteTodos";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -57,21 +58,11 @@ export const App = () => {
         onChange={onChangeTodoText}
         onClick={onClickAdd}
       />
-      <div className="incomplete-area">
-        <p className="title">未完了のTODO</p>
-        <ul>
-          {incompleteTodoItems.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                {/* htmlのイベント関数に引数を持たせたいときは、アロー関数でかく */}
-                <button onClick={() => onClickComplete(index)}>完了</button>
-                <button onClick={() => onclickDelete(index)}>削除</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <IncompleteTodos
+        todos={incompleteTodoItems}
+        onClickComplete={onClickComplete}
+        onclickDelete={onclickDelete}
+      />
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
