@@ -4,12 +4,9 @@ import "./styles.css";
 export const App = () => {
   const [todoText, setTodoText] = useState("");
 
-  const [incompleteTodoItems, setIncompleteTodoItems] = useState([
-    "お皿洗い",
-    "トイレ掃除"
-  ]);
+  const [incompleteTodoItems, setIncompleteTodoItems] = useState([]);
 
-  const [completeTodoItems, setCompleteTodoItems] = useState(["洗濯"]);
+  const [completeTodoItems, setCompleteTodoItems] = useState([]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
@@ -69,6 +66,7 @@ export const App = () => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
+                {/* htmlのイベント関数に引数を持たせたいときは、アロー関数でかく */}
                 <button onClick={() => onClickComplete(index)}>完了</button>
                 <button onClick={() => onclickDelete(index)}>削除</button>
               </div>
@@ -83,6 +81,7 @@ export const App = () => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
+                {/* htmlのイベント関数に引数を持たせたいときは、アロー関数でかく */}
                 <button onClick={() => onClickBack(index)}>戻す</button>
               </div>
             );
